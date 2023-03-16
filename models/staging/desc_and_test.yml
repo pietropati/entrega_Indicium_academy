@@ -1,0 +1,152 @@
+version: 2
+
+models:
+  - name: sapAddress
+    description: Raw data on Address. Infos from street/number to city.
+    columns: 
+      - name: addressid
+        description: Primary key for Address data.
+        tests:
+          - unique
+          - not_null
+      - name: addressline1
+        description: Street name and number.
+      - name: city
+        description: City's name.
+        tests:
+          - not_null
+      - name: stateprovinceid
+        description: FK for sapStateProvince.
+        tests:
+          - not_null
+  - name: sapCountryRegion
+    description: Raw data on CountryRegion. Name and abreviation with two letters.
+    columns: 
+      - name: countryregioncode
+        description: Two letters, primary key for CountryRegion data.
+        tests:
+          - unique
+          - not_null
+      - name: name
+        description: Country name.
+  - name: sapCreditCard
+    description: Raw data on Credit Card. Infos of Card Brand, Card Number, Expiration Year and Month.
+    columns: 
+      - name: creditcardid
+        description: Primary key for Credit Card data.
+        tests:
+          - unique
+          - not_null
+      - name: cardtype
+        description: Card Brand. 
+        tests:
+          - accepted_values:
+              values:
+                - ColonialVoice
+                - Distinguish
+                - SuperiorCard
+                - Vista   
+      - name: cardnumber
+        tests:
+          - unique
+          - not_null
+      - name: expmonth
+        description: Card's Expiration date Month.    
+      - name: expyear
+        description: Card's Expiration date Year.
+  - name: sapCustomer
+    description: Raw data on Customer.
+    columns: 
+      - name: customerid
+        description: Primary key for Customer data.
+        tests:
+          - unique
+          - not_null
+      - name: personid
+        description: Foreigner Key for Person data.
+      - name: storeid
+        description: Foreigner Key for Store data.  
+      - name: territory
+        description: Foreigner Key for Territory data.
+  - name: sapPerson
+    description: Raw data on Person.
+  - name: sapProduct
+    description: Raw data on Product.
+    columns: 
+      - name: productid
+        description: Primary key for Product data.
+        tests:
+          - unique
+          - not_null
+      - name: name
+        description: Product name.
+  - name: sapSalesOrderDetail
+    description: Fact raw data on Orders. What was bought, how many, the price, the discount.
+    columns: 
+      - name: salesorderid
+        description: Foreigner key for Order data.
+      - name: salesorderdetailid
+        description: Primary key for Sales Order Detail data.  
+        tests:
+          - unique
+          - not_null
+      - name: orderqty
+        description: Quantity of itens ordered.  
+        tests:
+          - not_null 
+      - name: productid
+        description: Foreigner key for Product data.
+  - name: sapSalesOrderHeader
+    description: Raw data on Orders.
+    columns: 
+      - name: salesorderid
+        description: Primary key for Order data.
+        tests:
+          - unique
+          - not_null
+      - name: customerid
+        description: Foreigner key for Customer data. 
+      - name: billtoaddressid
+        description: Foreigner key for Address data refering to order's billing.  
+        tests:
+          - not_null
+      - name: shiptoaddressid
+        description: Foreigner key for Address data refering to order's shipping.  
+        tests:
+          - not_null 
+      - name: creditcarid
+        description: Foreigner key for Credit Card data.
+  - name: sapSalesOrderHeaderSalesReason
+    description: Table with Sales Order ID and Sales Reason Id.
+  - name: sapSalesReason
+    description: Raw data on Sales Reason. Not all ordersid are on the table.
+    columns: 
+      - name: salesreasonid
+        description: Primary key for Sales Reason data.
+        tests:
+          - unique
+          - not_null
+      - name: name
+        description: Sales Reason.
+      - name: reasontype
+        description: Macro group of Sales Reason. 
+        tests:
+          - accepted_values:
+              values:
+                - Marketing
+                - Other
+                - Promotion
+  - name: sapStateProvince
+    description: Raw data on State Province of the Address.
+    columns: 
+      - name: stateprovinceid
+        description: Primary key for State Province data.
+        tests:
+          - unique
+          - not_null
+      - name: stateprovincecode
+        description: Two Letters of State Province abreviation.
+      - name: countryregioncode
+        description: Foreigner key for Country Region data.
+      - name: name
+        description: State Province name.

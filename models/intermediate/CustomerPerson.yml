@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: CustomerPerson
+    description: Data on Customer's Person Name.

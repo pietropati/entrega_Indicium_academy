@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: dim_Orders
+    description: Orders dimension table with info of cardt ype, customer person, billing complete address, shipping complete address 

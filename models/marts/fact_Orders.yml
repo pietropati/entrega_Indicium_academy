@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: fact_Orders
+    description: Orders fact table with info of what was bought, how many, the price, the discount, the totla price.

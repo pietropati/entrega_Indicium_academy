@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: CreditCard
+    description: Fields treatment of the table sapCreditCard.

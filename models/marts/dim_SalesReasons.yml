@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: dim_SalesReasons
+    description: As it is possible to have more than one reason per salesorderid, normalized table on sales order id without repetition and having each reason possibility on column, appllying a Boolean parameter.

@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: SalesOrderDetail
+    description: Fields treatment of the table sapSalesOrderDetaul.

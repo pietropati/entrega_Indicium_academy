@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: SalesOrderHeader
+    description: Fields treatment of the table sapSalesOrderHeader.

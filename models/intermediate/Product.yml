@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: Product
+    description: Fields treatment of the table sapProduct.

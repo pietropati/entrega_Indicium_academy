@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: AddressComplete
+    description: Data on Address bringing togheter Street, State/Province and Country/Region Info.
